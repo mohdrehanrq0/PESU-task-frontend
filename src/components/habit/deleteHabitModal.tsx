@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useDeleteHabit } from '../apiService/query/habitQuery';
 import { Button } from '../ui/button';
 import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../ui/dialog';

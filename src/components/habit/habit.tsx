@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Dialog, DialogContent, DialogTrigger } from '../../components/ui/dialog';
 import { useGetAllUserHabit } from '../apiService/query/habitQuery';

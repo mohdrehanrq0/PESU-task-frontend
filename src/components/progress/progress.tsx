@@ -2,13 +2,12 @@ import { Flame } from 'lucide-react';
 import { useContext } from 'react';
 
 import { useGetUserProgress } from '../apiService/query/progressQuery';
-import { AuthContext } from '../context/AuthContext';
-import { IHabitData } from '../habit/editHabit';
+import { AuthContext, AuthContextData } from '../context/AuthContext';
 import DashboardLayout from '../layout/layout';
 
 const Progress = () => {
   const { data: progressData, error } = useGetUserProgress();
-  const { session } = useContext(AuthContext);
+  const { session } = useContext(AuthContext) as AuthContextData;
 
   return (
     <DashboardLayout>
@@ -68,6 +67,7 @@ const Progress = () => {
                     </td>
                   </tr>
                 ) : (
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   progressData?.data.habits.map((e: any, i: number) => (
                     <tr className="hover:bg-bg-300 " key={i}>
                       <td className="py-4 px-6 text-sm font-medium text-text whitespace-nowrap ">

@@ -4,11 +4,12 @@ import { toast } from 'sonner';
 
 import { useSession } from '../apiService/query/userQuery';
 
-export type AuthContextData = {
+export interface AuthContextData {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   session: any | null;
   isFetching: boolean;
   isFetchingFirstTime: boolean;
-};
+}
 
 export const AuthContext = createContext<AuthContextData | null>(null);
 
