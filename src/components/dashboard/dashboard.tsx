@@ -1,18 +1,22 @@
 import { Flame } from 'lucide-react';
+import { useContext } from 'react';
 
 import { cn } from '../../lib/utils';
 import {
     useCompleteHabit, useGetAllUserHabit, useLastSevenDaysCompletionRateForAllHabits
 } from '../apiService/query/habitQuery';
+import { AuthContext, AuthContextData } from '../context/AuthContext';
 import { IHabitData } from '../habit/editHabit';
 import DashboardLayout from '../layout/layout';
 import HabitProgressChart from './progressChart';
 
 const Dashboard = () => {
   const { data: habitData, error } = useGetAllUserHabit();
+  const { session } = useContext(AuthContext) as AuthContextData;
   const { data: graphData, error: graphError } =
     useLastSevenDaysCompletionRateForAllHabits();
   const { mutateAsync: completeHabit, isPending } = useCompleteHabit();
+
   return (
     <DashboardLayout>
       <div className="flex gap-8 items-start">
@@ -83,9 +87,10 @@ const Dashboard = () => {
         </div>
         <div className="w-1/3 flex flex-col gap-4">
           <div className="flex items-center p-5 rounded bg-bg-300 gap-4">
-            Streak:{" "}
+            Reward Point:{" "}
             <span className="flex gap-2 text-2xl items-center font-bold">
-              1<Flame />
+              {session?.reward_points}
+              <Flame />
             </span>
           </div>
           <div className="flex flex-col items-center p-5 rounded bg-bg-300 gap-4">

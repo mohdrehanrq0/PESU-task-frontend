@@ -41,7 +41,7 @@ const AuthContextProvider = ({ children }: React.PropsWithChildren) => {
   return (
     <AuthContext.Provider
       value={{
-        session: session || null,
+        session: session?.data.user || null,
         isFetching: isSessionFetching,
         isFetchingFirstTime: isSessionFetchingFirstTime,
       }}

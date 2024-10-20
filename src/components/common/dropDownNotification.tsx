@@ -1,11 +1,25 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import ClickOutside from "./clickOutside";
+// import { onMessageListener, requestPermission } from '../../lib/firebase';
+import ClickOutside from './clickOutside';
 
 const DropdownNotification = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notifying, setNotifying] = useState(true);
+
+  // useEffect(() => {
+  //   requestPermission().then((token) => {
+  //     if (token) {
+  //       console.log("FCM Token:", token);
+  //       // user token to store in backend
+  //     }
+  //   });
+
+  //   onMessageListener().then((payload) => {
+  //     console.log("Message received. ", payload);
+  //   });
+  // }, []);
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
